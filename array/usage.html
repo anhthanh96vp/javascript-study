@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+
+
+        //-------------Array.isArray()-------------------
+
+        //Xác định xem đối tượng truyền qua có phải array hay không. Đầu ra sẽ là true hoặc false
+
+        Array.isArray([1, 2, 3]);  // true
+        Array.isArray({ foo: 123 }); // false
+        Array.isArray('foobar');   // false
+        Array.isArray(undefined);  // false
+
+
+
+
+
+
+
+
+
+        //----------concat()---------------------
+
+        //Phương thức nối các mảng lại với nhau. Nó không thay đổi các mảng hiện có, mà thay vào đó trả về một mảng mới.
+
+        var num1 = [1, 2, 3],
+            num2 = [4, 5, 6],
+            num3 = [7, 8, 9];
+        var nums = num1.concat(num2, num3); // results in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        //Có thể nối mảng lồng nhau như thế này
+        var num1 = [[1]];
+        var num2 = [2, [3]];
+        var nums = num1.concat(num2); // results in [[1], 2, [3]]
+
+        num1[0].push(4); // results in [[1, 4], 2, [3]]
+
+
+
+
+
+
+
+
+
+        //--------------------entries()------------------------
+
+        //Trả về cặp key/value của 1 mảng => Đại khái là đó là cặp [vị trí + giá trị] của 1 mảng 
+
+        var a = ['a', 'b', 'c'];
+        var iterator = a.entries();
+
+        for (let e of iterator) {
+            console.log(e);
+        }
+        // [0, 'a']
+        // [1, 'b']
+        // [2, 'c']
+
+
+
+
+
+
+
+
+        //---------------------every()---------------------------
+
+        //Phương thức kiểm tra điều kiện các yếu tố trong array có vượt qua kiểm tra trong function không
+        function isBigEnough(element, index, array) {
+            return element >= 10;
+        }
+        [12, 5, 8, 130, 44].every(isBigEnough);   // false
+        [12, 54, 18, 130, 44].every(isBigEnough); // true
+
+        //Viết bằng arrow function
+        [12, 5, 8, 130, 44].every(x => x >= 10); // false
+        [12, 54, 18, 130, 44].every(x => x >= 10); // true
+
+
+
+
+        //----------------------fill()---------------------------
+
+        //Phương thức gán 1 giá trị tĩnh cho array từ điểm bắt đầu đến kết thúc
+
+
+        [1, 2, 3].fill(4);               // [4, 4, 4]
+        [1, 2, 3].fill(4, 1);            // [1, 4, 4]
+        [1, 2, 3].fill(4, 1, 2);         // [1, 4, 3]
+        [1, 2, 3].fill(4, 1, 1);         // [1, 2, 3]
+        [1, 2, 3].fill(4, 3, 3);         // [1, 2, 3]
+        [1, 2, 3].fill(4, -3, -2);       // [4, 2, 3]
+        [1, 2, 3].fill(4, NaN, NaN);     // [1, 2, 3]
+        [1, 2, 3].fill(4, 3, 5);         // [1, 2, 3]
+        Array(3).fill(4);                // [4, 4, 4]
+        [].fill.call({ length: 3 }, 4);  // {0: 4, 1: 4, 2: 4, length: 3}
+
+        // Objects by reference.
+        var arr = Array(3).fill({}) // [{}, {}, {}];
+        arr[0].hi = "hi"; // [{ hi: "hi" }, { hi: "hi" }, { hi: "hi" }]
+
+
+
+
+
+
+
+        //-----------------------filter()---------------------------
+
+
+        //Phương thức kiểm tra điều kiện các yếu tố trong array có vượt qua kiểm tra trong function không
+        //Tương tự every(), return trở về every kiểm tra true false => nhưng nó sẽ trả về 1 mảng mới với các element vượt qua kiểm tra
+
+        function isBigEnough(value) {
+            return value >= 10;
+        }
+
+        var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+        // filtered is [12, 130, 44]
+
+
+
+
+
+
+
+
+        //-----------------------find() --- findIndex()-------------------------------
+
+        // Với hàm find() trả về giá trị đầu tiên được tìm thấy trong mảng vượt qua điều kiện kiểm tra trong function
+        // Với findtIndex() giá trị trả về sẽ là index (vị trí) của nó trong array
+
+        function test(value) {
+            return value >= 10;
+        }
+        var fin = [3, 5, 8, 130, 44].find(test); // console.log(fin) =>  130
+        var fin2 = [3, 5, 8, 130, 44].findIndex(test); // console.log(fin2) =>  3
+
+
+
+
+
+
+
+
+        //----------------------map() ----- flatMap()------------------------------
+
+
+        //Lặp qua các phần tử trong mảng và làm gì đấy đại khái thế
+        var arr1 = [1, 2, 3, 4];
+
+        arr1.map(x => [x * 2]);
+        // [[2], [4], [6], [8]]
+
+        arr1.flatMap(x => [x * 2]);
+        // [2, 4, 6, 8]
+
+        // only one level is flattened
+        arr1.flatMap(x => [[x * 2]]);
+        // [[2], [4], [6], [8]]
+
+
+
+
+
+
+
+
+
+
+        //---------------------forEach()----------------------------
+
+        //Lặp qua các phần tử trong mảng
+        const items = ['item1', 'item2', 'item3'];
+        const copy = [];
+
+        items.forEach(function (item) {
+            copy.push(item)
+        });
+
+
+
+
+        //----------------------includes()-------------------------
+
+        //Tìm phần tử trong mảng và trả về true hoặc false
+
+        [1, 2, 3].includes(2);     // true
+        [1, 2, 3].includes(4);     // false
+        [1, 2, 3].includes(3, 3);  // false
+        [1, 2, 3].includes(3, -1); // true
+        [1, 2, NaN].includes(NaN); // true
+
+
+
+        //-----------------------indexOf()-------------------------
+
+        //Tương tự includes(), hàm indexOf() tìm giá trị trong mảng.
+        //Nhưng kết quả trả về sẽ là -1( <=> false) và vị trí của phần tử nếu có
+
+
+        var array = [2, 9, 9];
+        array.indexOf(2);     // 0
+        array.indexOf(7);     // -1
+        array.indexOf(9, 2);  // 2
+        array.indexOf(2, -1); // -1
+        array.indexOf(2, -3); // 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
