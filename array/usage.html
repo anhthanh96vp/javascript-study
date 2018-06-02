@@ -15,7 +15,7 @@
 
 
 
-        //-------------Array.isArray()-------------------
+        //----------------------------------Array.isArray()-------------------
 
         //Xác định xem đối tượng truyền qua có phải array hay không. Đầu ra sẽ là true hoặc false
 
@@ -32,7 +32,7 @@
 
 
 
-        //----------concat()---------------------
+        //---------------------------------------concat()---------------------
 
         //Phương thức nối các mảng lại với nhau. Nó không thay đổi các mảng hiện có, mà thay vào đó trả về một mảng mới.
 
@@ -77,9 +77,9 @@
 
 
 
-        //---------------------every()---------------------------
+        //---------------------------------every()---------------------------
 
-        //Phương thức kiểm tra điều kiện các yếu tố trong array có vượt qua kiểm tra trong function không
+        //Phương thức kiểm tra điều kiện tất cả các yếu tố trong array có vượt qua kiểm tra trong function không
         function isBigEnough(element, index, array) {
             return element >= 10;
         }
@@ -93,7 +93,29 @@
 
 
 
-        //----------------------fill()---------------------------
+
+        //---------------------------------some()---------------------------
+
+        //Tương tự với every nhưng phương thức này chỉ cần 1 element vượt qua kiểm tra là true
+
+        function isBiggerThan10(element, index, array) {
+            return element > 10;
+        }
+
+        [2, 5, 8, 1, 4].some(isBiggerThan10);  // false
+        [12, 5, 8, 1, 4].some(isBiggerThan10); // true
+
+
+
+        [2, 5, 8, 1, 4].some(x => x > 10);  // false
+        [12, 5, 8, 1, 4].some(x => x > 10); // true
+
+
+
+
+
+
+        //-------------------------------------fill()---------------------------
 
         //Phương thức gán 1 giá trị tĩnh cho array từ điểm bắt đầu đến kết thúc
 
@@ -157,7 +179,7 @@
 
 
 
-        //----------------------map() ----- flatMap()------------------------------
+        //-------------------------------------map() ----- flatMap()------------------------------
 
 
         //Lặp qua các phần tử trong mảng và làm gì đấy đại khái thế
@@ -182,7 +204,7 @@
 
 
 
-        //---------------------forEach()----------------------------
+        //----------------------------------forEach()----------------------------
 
         //Lặp qua các phần tử trong mảng
         const items = ['item1', 'item2', 'item3'];
@@ -195,7 +217,12 @@
 
 
 
-        //----------------------includes()-------------------------
+
+
+
+
+
+        //--------------------------------------includes()-------------------------
 
         //Tìm phần tử trong mảng và trả về true hoặc false
 
@@ -207,7 +234,13 @@
 
 
 
-        //-----------------------indexOf()-------------------------
+
+
+
+
+
+
+        //----------------------------------indexOf()-------------------------
 
         //Tương tự includes(), hàm indexOf() tìm giá trị trong mảng.
         //Nhưng kết quả trả về sẽ là -1( <=> false) và vị trí của phần tử nếu có
@@ -229,7 +262,41 @@
 
 
 
+        //---------------------------------map()---------------------------
 
+        //  Hàm map() trong Javascript là một hàm dành cho đối tượng array, hàm này có công dụng tương tự như vòng lăp forEach.
+        // Hàm map() sẽ lặp qua từng phần tử và tham số truyền vào là một anonymous function, hàm anonymous sẽ có một tham số truyền vào và đó chính là phần tử của mỗi vòng lặp, bên trong thân hàm anonymouse sẽ có lệnh return về một giá trị và giá trị này sẽ thay thế cho phần tử đó.
+
+        // Ta không cần tạo mảng mới và push() từng giá trị vào.map() trả về 1 mảng mới với các giá trị đã được chỉnh sửa, do đó có thể dễ dàng gán nó cho 1 biến khác.
+        // Có 1 điều cần phải ghi nhớ, đó là luôn sử dụng return để trả về từng giá trị sau chỉnh sửa, nếu không mảng trả về cuối cùng sẽ chỉ chứa các giá trị undefined.
+
+        var numbers = [5, 10, 20, 22, 60];
+        var new_number = numbers.map(function (item) {
+            return item * 2; // nhân đôi giá trị
+        });
+        // Kết quả: [10, 20, 40, 44, 120]
+
+
+
+        var numbers = [1, 4, 9];
+        var roots = numbers.map(Math.sqrt);
+        // roots is now [1, 2, 3]
+        // numbers is still [1, 4, 9]
+
+
+
+
+
+
+        //------------------------splice()------------------------------
+
+        //Cắt và thêm phần tử vào mảng
+
+        var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+        var removed = myFish.splice(3, 1);
+
+        // removed is ["mandarin"]
+        // myFish is ["angel", "clown", "drum", "sturgeon"]
 
 
 

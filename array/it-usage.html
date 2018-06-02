@@ -10,7 +10,7 @@
 
 <body>
     <script>
-        //--------------Array.from()-----------------
+        //-------------------------------Array.from()-----------------
 
         // Cho phép tạo ra 1 cá thể mảng mới dựa theo 1 đối tượng giống như mảng hoặc có thể lặp lại.
 
@@ -29,7 +29,7 @@
 
 
 
-        //--------------Array.of()-------------
+        //----------------------------Array.of()-------------
 
         //Tạo ra 1 array mới với đối số biến (đéo thấy có tác dụng cc gì nhiều)
 
@@ -41,10 +41,10 @@
 
 
 
-        //---------copyWithin()-----------------
+        //--------------------------copyWithin()-----------------
 
         // Hàm sao chép mảng kiểu nhảm chắc cũng đéo dùng đâu =))
-       
+
         [1, 2, 3, 4, 5].copyWithin(-2);  // [1, 2, 3, 1, 2]
 
 
@@ -59,7 +59,7 @@
 
 
 
-        //--------------join()------------------------
+        //----------------------------join()------------------------
 
         //Phương thức chuyển chuỗi thành mảng
 
@@ -72,6 +72,178 @@
 
 
 
+
+        //--------------------------lastIndexOf()-------------------
+
+        //Phương thức trả về vị trí cuối cùng xuất hiện của element trong mảng, nếu không có sẽ return -1;
+        var numbers = [2, 5, 9, 2];
+        numbers.lastIndexOf(2);     // 3
+        numbers.lastIndexOf(7);     // -1
+        numbers.lastIndexOf(2, 3);  // 3
+        numbers.lastIndexOf(2, 2);  // 0
+        numbers.lastIndexOf(2, -2); // 0
+        numbers.lastIndexOf(2, -1); // 3
+
+
+
+
+
+
+
+
+        //----------------------------pop()------------------------------
+
+        // Gần giống push(), pop() sẽ lấy giá trị cuối cùng của 1 mảng và return giá trị đó.
+
+        var myFish = ['angel', 'clown', 'mandarin', 'sturgeon']; // ['angel', 'clown', 'mandarin' ] 
+
+        var popped = myFish.pop();  // 'sturgeon'
+
+
+
+
+
+
+
+
+        //------------------------------push()---------------------------------
+
+        // Phương thức thêm giá trị vào cuối mảng và thay đổi chiều dài của mảng đó
+
+        var sports = ['soccer', 'baseball'];        // ['soccer', 'baseball', 'football', 'swimming']
+        var total = sports.push('football', 'swimming');           // 4
+
+
+
+
+
+
+        //----------------------------unshift()-------------------------------------
+
+        //Tương tự hàm push(), unshift() là thêm giá trị vào đầu mảng
+
+        var arr = [1, 2];
+
+        arr.unshift(0); // result of call is 3, the new array length
+        // arr is [0, 1, 2]
+
+        arr.unshift(-2, -1); // = 5
+        // arr is [-2, -1, 0, 1, 2]
+
+        arr.unshift([-3]);
+        // arr is [[-3], -2, -1, 0, 1, 2]
+
+
+
+
+
+
+
+
+
+        //----------------------------reverse()----------------------------
+
+        // Đảo ngược các phần tử trong mảng
+
+        const d = [1, 2, 3];
+        d.reverse();   // [3, 2, 1]
+
+
+
+
+        //----------------------shift()------------------------------------
+
+        // Xóa phần tử đầu tiên khỏi mảng
+
+        var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+        var shifted = myFish.shift();
+
+        // myFish = ['clown', 'mandarin', 'surgeon']
+
+        // Removed this element: angel
+
+
+
+
+
+
+        //------------------------slice()----------------------------------
+
+        // Trích xuất một phần của mảng ban đầu rồi trả về một mảng mới.
+
+        var data = ["HTC", "Nokia", "Apple", "LG", "Honda", "SYM", "Suzuki"];
+        var abc = data.slice(1, 5); //abc = Nokia,Apple,LG,Honda
+
+
+
+
+
+
+
+        //------------------------sort()----------------------------------
+
+        //Hàm sắp xếp > lên w3school xem cho trực quan
+
+
+
+
+
+
+
+
+
+
+
+        //---------------------toString()------------------------------------
+
+
+        // Phương thức trả về 1 chuỗi đại diện cho mảng cũ với tổng hợp các element 
+
+
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.toString();
+
+
+        // Banana, Orange, Apple, Mango
+
+
+
+        //------------------values()----------------------------------
+
+
+        //values()phương thức trả về một mới Array Iteratorđối tượng có chứa các giá trị cho mỗi chỉ số trong mảng.
+
+        var arr = ['w', 'y', 'k', 'o', 'p'];
+        var iterator = arr.values();
+
+        for (let letter of iterator) {
+            console.log(letter);
+        }
+            // w
+            // y
+            // k
+            // o
+            // p
+ 
+
+
+
+        //---------------arr[Symbol.iterator]()---------------------------------
+        // Giá trị ban đầu của thuộc @@iteratortính là đối tượng hàm giống như giá trị ban đầu của thuộc values()tính.
+        //Đéo hiểu lắm luôn
+
+        var arr = ['w', 'y', 'k', 'o', 'p'];
+            var eArr = arr[Symbol.iterator]();
+            // your browser must support for..of loop
+            // and let-scoped variables in for loops
+            for (let letter of eArr) {
+                console.log(letter);
+        }
+            // w
+            // y
+            // k
+            // o
+            // p
     </script>
 </body>
 
